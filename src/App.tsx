@@ -58,8 +58,6 @@ function App() {
           )}
 
 
-
-
         </C.UploadForm>
 
 
@@ -81,7 +79,7 @@ function App() {
         {!loading && photos.length === 0 &&
           <C.ScreenWarning>
             <div className='emoji'>😥</div>
-            <div>Nãoafotos cadastradas</div>
+            <div>Não a fotos cadastradas</div>
           </C.ScreenWarning>
         }
       </C.Area>
