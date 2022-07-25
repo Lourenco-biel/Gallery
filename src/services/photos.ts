@@ -1,6 +1,6 @@
 import { storage } from './../libs/firebase';
 import { Photo } from './../types/photos';
-import { ref, listAll, getDownloadURL, uploadBytes } from 'firebase/storage'
+import { ref, listAll, getDownloadURL, uploadBytes, deleteObject  } from 'firebase/storage'
 import { v4 as createId } from 'uuid'
 
 export const getAll = async () => {
@@ -27,12 +27,16 @@ export const insert = async (file: File) => {
         let newFile = ref(storage, `image/${randomName}`)
         let upload = await uploadBytes(newFile, file)
         let photoUrl = await getDownloadURL(upload.ref)
-
         return { name: upload.ref.name, url: photoUrl } as Photo;
 
     } else {
         return new Error('Tipo de arquivo não permtido')
     }
 
+}
+
+export const Delete = ()=>{
+    const imagesFolder = ref(storage, "images");
+    deleteObject(imagesFolder)
 
 }

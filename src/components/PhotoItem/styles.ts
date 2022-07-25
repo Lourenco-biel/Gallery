@@ -11,4 +11,15 @@ img{
     margin-bottom: 10px;
     border-radius: 10px;
 }
+
+button{
+    position: relative;
+    background-color: transparent;
+    border: none;
+    right: -104px;   
+    cursor: pointer;
+    &:hover{
+        opacity: .9;
+    } 
+}
 `
