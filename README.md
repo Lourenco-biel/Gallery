@@ -34,7 +34,7 @@ utilizei as ferramentas: React.js, typescript, Styled-componentes, firabase com 
   <tr>
     <td align="center">
       <a href="#">
-        <img src="./src/Assets/Eu.png" width="100px;" alt="Foto do Gabriel Silva no GitHub"/><br>
+        <img src="./src/assets/Eu.png" width="100px;" alt="Foto do Gabriel Silva no GitHub"/><br>
         <sub>
           <a >Gabriel Ibiapino</a>
         </sub>
