@@ -1,6 +1,6 @@
 # Galeria de fotos
 
-<img src="" alt="Gif do projeto">
+<img src="./src/assets/gif.gif" alt="Gif do projeto">
 
 
 > Projeto finalizado 
@@ -8,11 +8,13 @@
 
 ## 💻 Sobre o Projeto
 
-Este projeto trata-se de uma app de fotos, você aonde voce pode adicionar suas fotos e deixa-las guardadas!
+Este projeto trata-se de uma app de fotos, aonde voce pode adicionar suas fotos acessando sua pasta, excluir a imagem conforme sua preferencia ou deixa-las guardadas!
 
 utilizei as ferramentas: React.js, typescript, Styled-componentes, firabase com as variveis de ambiente 
 
 <br>
+
+
 
 ## 👨‍💻Link para acesso: 
 <a href="https://photosgaller.netlify.app/">Aperte aqui ⬅ </a>

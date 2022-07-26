@@ -4,7 +4,7 @@ export const Container = styled.div`
 background-color: #3D3F4D;
 border-radius: 10px;
 padding: 10px;
-
+display: inline-grid;
 img{
     max-width: 100%;
     display: block;
@@ -13,10 +13,11 @@ img{
 }
 
 button{
-    position: relative;
+
     background-color: transparent;
     border: none;
-    right: -104px;   
+    display: flex;
+    flex-direction: row-reverse;
     cursor: pointer;
     &:hover{
         opacity: .9;

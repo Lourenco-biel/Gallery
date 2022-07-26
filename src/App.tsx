@@ -1,7 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import * as C from './App.styles'
 import * as Photos from './services/photos'
-import { Photo } from './types/photos';
+import { Photo } from './types/photo';
 import { PhotoItem } from './components/PhotoItem'
 
 function App() {
@@ -10,18 +10,19 @@ function App() {
   const [photos, setPhotos] = useState<Photo[]>([])
 
   useEffect(() => {
-    const getPhotos = async () => {
-      setLoading(true)
-      setPhotos(await Photos.getAll())
-      setLoading(false)
-
-    }
+    
     getPhotos()
   }, [])
 
+  const getPhotos = async () => {
+    setLoading(true)
+    setPhotos( await Photos.getAll())
+    setLoading(false)
+
+  }
+
   const handleFormeSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
     const formData = new FormData(e.currentTarget);
     const file = formData.get('image') as File;
 
@@ -30,6 +31,7 @@ function App() {
       setUpLoading(true)
       let result = await Photos.insert(file)
       setUpLoading(false)
+  
 
       if (result instanceof Error) {
         alert(`${result.name} - ${result.message}`)
@@ -38,8 +40,14 @@ function App() {
         newPhotoList.push(result)
         setPhotos(newPhotoList)
       }
-    }
+    } 
   }
+
+  const handleDelete = async (name: string) => {
+    await Photos.deletePhoto(name);
+    getPhotos();
+  }
+
 
 
   return (
@@ -49,12 +57,20 @@ function App() {
         <C.Header>Galeria de fotos</C.Header>
 
         <C.UploadForm method='POST' onSubmit={handleFormeSubmit}>
-          <input type='file' name='image' />
+       
+
+        {uploading ? (
+             <input type='file' name='image' value={''}/>
+          ) : (
+            <input type='file' name='image' />
+            
+          )}
 
           {uploading ? (
             <input type='submit' value='Enviando' />
           ) : (
             <input type='submit' value='Enviar' />
+            
           )}
 
 
@@ -71,7 +87,11 @@ function App() {
         {!loading && photos.length > 0 &&
           <C.PhotoList>
             {photos.map((item, index) => (
-              <PhotoItem key={index} name={item.name}  url={item.url} />
+              <PhotoItem
+               key={index} 
+               name={item.name}  
+               url={item.url}  
+               onDelete={handleDelete}/>
             ))}
           </C.PhotoList>
         }

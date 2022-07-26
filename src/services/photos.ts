@@ -1,12 +1,12 @@
 import { storage } from './../libs/firebase';
-import { Photo } from './../types/photos';
-import { ref, listAll, getDownloadURL, uploadBytes, deleteObject  } from 'firebase/storage'
+import { Photo } from '../types/photo';
+import { ref, listAll, getDownloadURL, uploadBytes, deleteObject } from 'firebase/storage'
 import { v4 as createId } from 'uuid'
 
 export const getAll = async () => {
     let list: Photo[] = [];
 
-    const imagesFolder = ref(storage, "images");
+    const imagesFolder = ref(storage, "image");
     const photoList = await listAll(imagesFolder);
 
     for (let i in photoList.items) {
@@ -35,8 +35,7 @@ export const insert = async (file: File) => {
 
 }
 
-export const Delete = ()=>{
-    const imagesFolder = ref(storage, "images");
-    deleteObject(imagesFolder)
-
+export const deletePhoto = async (name: string) => {
+    let photoRef = ref(storage, `image/${name}`);
+    await deleteObject(photoRef);
 }
