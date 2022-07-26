@@ -50,4 +50,4 @@ utilizei as ferramentas: React.js, typescript, Styled-componentes, firabase com 
 <br>
 
 
-[⬆ Voltar ao topo](#Galeria-de-fotos)<br
+[⬆ Voltar ao topo](#Galeria-de-fotos)
